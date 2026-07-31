@@ -9,7 +9,12 @@ dotenv.config();
 const db = require('./db');
 
 const app = express();
+// Let Railway assign the PORT, fallback to 3000
 const PORT = process.env.PORT || 3000;
+
+// Tell Express it is running behind a proxy (Railway/Cloudflare)
+// This is critical for CORS and Rate Limiting to work correctly
+app.set('trust proxy', 1);
 
 // Remove ALL complex CORS and use the simplest possible approach
 app.use((req, res, next) => {
