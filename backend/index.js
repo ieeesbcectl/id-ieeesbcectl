@@ -13,7 +13,22 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 const allowedOrigins = process.env.FRONTEND_URL ? [process.env.FRONTEND_URL, 'http://localhost:5173'] : '*';
-app.use(cors({ origin: allowedOrigins }));
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins === '*') {
+      callback(null, true);
+    } else if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(helmet());
 
 const limiter = rateLimit({
