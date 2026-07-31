@@ -21,23 +21,17 @@
   margin-bottom: 36px;
 }
 
-.logoRing {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: var(--accent-gradient);
+.logoWrap {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 0 auto 16px;
-  box-shadow: 0 0 20px rgba(108, 99, 255, 0.4);
+  align-items: center;
+  margin-bottom: 16px;
 }
 
-.logoText {
-  font-family: 'Anton SC', sans-serif;
-  font-size: 18px;
-  color: #ffffff;
-  letter-spacing: 1px;
+.logoImg {
+  height: 60px;
+  width: auto;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
 }
 
 .title {
@@ -86,8 +80,8 @@
 }
 
 .input:focus {
-  border-color: #6C63FF;
-  background: rgba(108, 99, 255, 0.08);
+  border-color: var(--primary);
+  background: rgba(76, 175, 80, 0.08); /* Greenish background on focus */
 }
 
 .input::placeholder {

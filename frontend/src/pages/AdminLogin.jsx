@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import styles from './AdminLogin.module.css';
+import logo from '../assets/logo_bg_removed.png';
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -34,8 +35,8 @@ export default function AdminLogin() {
       <div className={styles.card}>
         {/* Logo / Brand */}
         <div className={styles.brand}>
-          <div className={styles.logoRing}>
-            <span className={styles.logoText}>IEEE</span>
+          <div className={styles.logoWrap}>
+            <img src={logo} alt="IEEE SB CECTL" className={styles.logoImg} />
           </div>
           <h1 className={styles.title}>Admin Panel</h1>
           <p className={styles.subtitle}>IEEE SB CECTL · ID Card System</p>
