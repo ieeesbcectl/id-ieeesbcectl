@@ -11,35 +11,24 @@ const db = require('./db');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// MUST BE FIRST: CORS configuration
-const allowedOrigins = process.env.FRONTEND_URL ? [process.env.FRONTEND_URL, 'http://localhost:5173'] : '*';
-
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins === '*') {
-      callback(null, true);
-    } else if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-// Express 5 compatible catch-all for OPTIONS requests
-// We don't use app.options('*') because path-to-regexp in Express 5 throws on it
-// Instead we just add a middleware that intercepts OPTIONS methods
+// Remove ALL complex CORS and use the simplest possible approach
 app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (origin === process.env.FRONTEND_URL || origin === 'http://localhost:5173') {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    // Fallback for testing
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  }
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+
   if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', 'true');
     return res.status(200).end();
   }
+
   next();
 });
 
