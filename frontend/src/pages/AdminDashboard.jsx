@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import MemberModal from '../components/MemberModal';
 import styles from './AdminDashboard.module.css';
+import logo from '../assets/logo_bg_removed.png';
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
@@ -111,12 +112,9 @@ export default function AdminDashboard() {
       {/* Top bar */}
       <header className={styles.topbar}>
         <div className={styles.brand}>
-          <div className={styles.logoRing}>
-            <span className={styles.logoText}>IEEE</span>
-          </div>
+          <img src={logo} alt="IEEE SB CECTL Logo" className={styles.logoImage} />
           <div>
             <h1 className={styles.brandTitle}>Admin Dashboard</h1>
-            <p className={styles.brandSub}>IEEE SB CECTL · ID Card System</p>
           </div>
         </div>
         <div className={styles.topbarActions}>

@@ -16,6 +16,8 @@ const PORT = process.env.PORT || 3000;
 // This is critical for CORS and Rate Limiting to work correctly
 app.set('trust proxy', 1);
 
+app.use(express.json());
+
 // Remove ALL complex CORS and use the simplest possible approach
 app.use((req, res, next) => {
   const origin = req.headers.origin;
@@ -45,7 +47,6 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP, please try again later.'
 });
 app.use('/api/', limiter);
-app.use(express.json());
 
 // Basic Route
 app.use('/api/auth', require('./routes/auth'));
