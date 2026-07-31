@@ -1,8 +1,19 @@
 const Database = require('better-sqlite3');
 const path = require('path');
+const fs = require('fs');
+
+// In production on Railway, we mount a volume at /app/data
+// So we should store the database file there.
+// Locally, we just store it in the current directory.
+const dataDir = process.env.NODE_ENV === 'production' ? '/app/data' : __dirname;
+
+// Ensure the directory exists (important for production)
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
 
 // Connect to SQLite DB (creates file if it doesn't exist)
-const dbPath = path.join(__dirname, 'database.db');
+const dbPath = path.join(dataDir, 'database.db');
 const db = new Database(dbPath, { verbose: console.log });
 
 // Create members table
