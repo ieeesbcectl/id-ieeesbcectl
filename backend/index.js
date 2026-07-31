@@ -30,7 +30,18 @@ app.use(cors({
 }));
 
 // Express 5 compatible catch-all for OPTIONS requests
-app.options('/(.*)', cors());
+// We don't use app.options('*') because path-to-regexp in Express 5 throws on it
+// Instead we just add a middleware that intercepts OPTIONS methods
+app.use((req, res, next) => {
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    return res.status(200).end();
+  }
+  next();
+});
 
 app.use(helmet());
 
