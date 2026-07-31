@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@500;700&display=swap');
+
+.page {
+  min-height: 100vh;
+  /* Very dark navy/grey background to frame the card */
+  background: #090b10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  /* Optional subtle radial glow behind the card */
+  background-image: radial-gradient(circle at center, #15241b 0%, #090b10 100%); /* Greenish radial */
+}
+
+/* ── Card ────────────────────────────── */
+.card {
+  /* Deep, rich greenish-black matching the overall tone */
+  background-color: #0b1410;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+@media (min-width: 480px) {
+  .page {
+    padding: 20px;
+  }
+  .card {
+    border-radius: 12px;
+    width: min(90vw, 380px); /* Slightly narrower to match ID card ratio */
+    min-height: auto;
+    height: 90vh; /* Slightly taller for larger screens */
+    max-height: 740px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* ── Background Accents ──────── */
+.bgGradientTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, #1d3323 0%, transparent 100%); /* Greenish gradient */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bgAccentStripe {
+  position: absolute;
+  top: -10%;
+  right: -20%;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.03) 45%, transparent 50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Header ──────────────────────── */
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px;
+  z-index: 10;
+  position: relative;
+}
+
+.logoImg {
+  height: 60px;
+  width: auto;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+}
+
+.ieeeLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+
+.ieeeLabelTop {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.ieeeLabelBottom {
+  font-size: 13px;
+  font-weight: 500;
+  color: #4CAF50; /* Greenish accent */
+  letter-spacing: 3px;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* ── Photo Area ────────────── */
+.photoWrap {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: -20px; /* Pull up under header */
+}
+
+.photo {
+  max-width: 90%;
+  max-height: 110%;
+  border-radius: 5%;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 10px 25px rgba(0,0,0,0.6));
+  z-index: 3;
+}
+
+.photoFallback {
+  width: 150px;
+  height: 150px;
+  background: #1d3323; /* Greenish */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 72px;
+  font-weight: 800;
+  color: #4CAF50; /* Greenish accent */
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  margin-bottom: 40px;
+  z-index: 3;
+}
+
+/* Adds depth behind/around the photo */
+.photoVignette {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(0deg, #0b1410 0%, transparent 100%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* ── Info Panel (Bottom Section) ─────────────── */
+.infoPanel {
+  position: relative;
+  z-index: 10;
+  padding: 0 24px 24px 24px;
+  background: #0b1410;
+  display: flex;
+  flex-direction: column;
+}
+
+.accentRule {
+  width: 30px;
+  height: 3px;
+  background: #4CAF50; /* Greenish accent */
+  margin-bottom: 16px;
+  border-radius: 2px;
+}
+
+.nameRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.position {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4CAF50; /* Keep the existing green accent or change to an electric blue */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 12px 0;
+}
+
+.department {
+  font-family: 'Montserrat', sans-serif;
+  color: #a0aec0;
+  margin: 0 0 24px 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.departmentText {
+  color: #cbd5e1;
+}
+
+.separator {
+  color: #4a5568;
+  margin: 0 4px;
+}
+
+.batchText {
+  color: #a0aec0;
+}
+
+/* ── Social Links ──────────── */
+/* CRITICAL CONSTRAINT: Exact format kept */
+.socialsRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 12px;
+  margin-bottom: 8px;
+}
+
+.socialTextLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #a0aec0;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
+}
+
+.socialTextLink:hover {
+  color: #ffffff;
+}
+
+.socialArrow {
+  opacity: 0.7;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  color: #4CAF50; /* Greenish accent */
+}
+
+.socialTextLink:hover .socialArrow {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* ── Bottom Bar ──────────── */
+.bottomBar {
+  background: #4CAF50; /* Greenish accent */
+  padding: 8px 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 10;
+}
+
+.memberTag {
+  font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+/* ── Loading Skeleton ────────────────── */
+.skeletonHeader {
+  height: 108px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.skeletonPhotoArea {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.skeletonPhotoArea::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+.skeletonInfo {
+  padding: 24px;
+  background: #0b1410;
+}
+
+.skeletonLine {
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.skeletonLine::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ── State: Not found / Error ───────────────── */
+.stateContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+  text-align: center;
+  z-index: 10;
+}
+
+.stateIcon {
+  font-size: 56px;
+  margin-bottom: 24px;
+  opacity: 0.8;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+}
+
+.stateTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  letter-spacing: 1px;
+}
+
+.stateText {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #a0aec0;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 280px;
+}

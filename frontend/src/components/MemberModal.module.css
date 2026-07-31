@@ -1,0 +1,200 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.modal {
+  background: var(--bg-card);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px 0;
+  position: sticky;
+  top: 0;
+  background: var(--bg-card);
+  z-index: 1;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.title {
+  font-family: 'Anton SC', sans-serif;
+  font-size: 22px;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+
+.closeBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text-secondary);
+  font-size: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.closeBtn:hover { background: rgba(255,255,255,0.14); }
+
+.form {
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Photo */
+.photoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.photoPreview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(108, 99, 255, 0.12);
+  border: 2px dashed rgba(108, 99, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.photoPreview:hover { border-color: #6C63FF; }
+
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoPlaceholder {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 8px;
+}
+
+.photoHint {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+}
+
+.hiddenInput { display: none; }
+
+/* Grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 500px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input:focus { border-color: #6C63FF; }
+.input::placeholder { color: rgba(255,255,255,0.22); }
+
+/* Section */
+.section {}
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+.sectionTitle span { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 12px; opacity: 0.7; }
+
+/* Error */
+.error {
+  font-size: 13px;
+  color: var(--danger);
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.cancelBtn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.cancelBtn:hover { background: rgba(255,255,255,0.1); }
+
+.saveBtn {
+  background: var(--accent-gradient);
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  padding: 11px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: opacity 0.2s, transform 0.1s;
+}
+.saveBtn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+.saveBtn:disabled { opacity: 0.5; cursor: not-allowed; }
