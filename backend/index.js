@@ -12,15 +12,25 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // MUST BE FIRST: CORS configuration
+const allowedOrigins = process.env.FRONTEND_URL ? [process.env.FRONTEND_URL, 'http://localhost:5173'] : '*';
+
 app.use(cors({
-  origin: '*', // Temporarily allow all origins to isolate the issue
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins === '*') {
+      callback(null, true);
+    } else if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// MUST BE SECOND: Handle OPTIONS requests explicitly for all routes
-app.options('*', cors());
+// Express 5 compatible catch-all for OPTIONS requests
+app.options('/(.*)', cors());
 
 app.use(helmet());
 
