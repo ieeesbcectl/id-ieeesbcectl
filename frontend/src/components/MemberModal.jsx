@@ -121,7 +121,7 @@ export default function MemberModal({ member, onClose, onSave }) {
               onChange={handlePhotoChange}
               className={styles.hiddenInput}
             />
-            <p className={styles.photoHint}>Uploaded in AVIF format · Optional</p>
+            <p className={styles.photoHint}>Profile Picture &#x2022; Upload in AVIF format</p>
           </div>
 
           {/* Core fields */}

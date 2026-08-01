@@ -1,221 +1,283 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Outfit:wght@400;500;600;700;800&family=Oswald:wght@500;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 .page {
   min-height: 100vh;
-  /* Very dark navy/grey background to frame the card */
   background: #090b10;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Outfit', sans-serif;
   color: #fff;
-  /* Optional subtle radial glow behind the card */
-  background-image: radial-gradient(circle at center, #15241b 0%, #090b10 100%); /* Greenish radial */
-}
-
-/* ── Card ────────────────────────────── */
-.card {
-  /* Deep, rich greenish-black matching the overall tone */
-  background-color: #0b1410;
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
 }
 
 @media (min-width: 480px) {
   .page {
     padding: 20px;
   }
+}
+
+.card {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0d0f11;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+}
+
+@media (min-width: 480px) {
   .card {
     border-radius: 12px;
-    width: min(90vw, 380px); /* Slightly narrower to match ID card ratio */
+    width: min(90vw, 380px);
     min-height: auto;
-    height: 90vh; /* Slightly taller for larger screens */
-    max-height: 740px;
+    height: 90vh;
+    max-height: 640px;
     border: 1px solid rgba(255, 255, 255, 0.05);
   }
 }
 
-/* ── Background Accents ──────── */
-.bgGradientTop {
+/* ── Background Elements ── */
+.bgBase {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
-  background: linear-gradient(180deg, #1d3323 0%, transparent 100%); /* Greenish gradient */
-  z-index: 1;
-  pointer-events: none;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, #0d0f11 0%, #151a1d 100%);
+  z-index: 0;
 }
 
-.bgAccentStripe {
+.bgPattern {
   position: absolute;
-  top: -10%;
-  right: -20%;
-  width: 150%;
-  height: 150%;
-  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.03) 45%, transparent 50%);
+  top: -10%; right: -10%; bottom: 0;
+  width: 70%;
+  background-image: radial-gradient(rgba(76, 175, 80, 0.5) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+  opacity: 0.8;
+  clip-path: polygon(100% 0, 100% 100%, 0% 100%, 45% 0%);
   z-index: 1;
-  pointer-events: none;
 }
 
-/* ── Header ──────────────────────── */
+.bgShape1 {
+  position: absolute;
+  top: -10%; left: -10%;
+  width: 120%; height: 60%;
+  background: #111416;
+  clip-path: polygon(0 0, 100% 0, 100% 30%, 40% 100%, 0 60%);
+  z-index: 2;
+}
+
+.bgShape2 {
+  position: absolute;
+  top: -10%; left: -10%;
+  width: 120%; height: 62%;
+  background: rgba(0,0,0,0.6);
+  clip-path: polygon(0 0, 100% 0, 100% 32%, 42% 100%, 0 62%);
+  z-index: 1;
+}
+
+/* Green vertical line on the left */
+.greenLine {
+  position: absolute;
+  left: 20px;
+  top: -10px;
+  bottom: 60%;
+  width: 2px;
+  background: #4CAF50;
+  z-index: 5;
+}
+.greenLine::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4CAF50;
+}
+
+/* Watermark arrow/diamond */
+.watermark {
+  position: absolute;
+  left: -40px;
+  top: 35%;
+  width: 200px;
+  height: 200px;
+  z-index: 3;
+  opacity: 0.15;
+}
+
+.watermarkDiamond {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border: 12px solid #fff;
+  border-radius: 30px;
+  transform: rotate(45deg);
+}
+
+.watermarkArrow {
+  position: absolute;
+  width: 0; height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #fff;
+  top: 30px;
+  left: 75px;
+  z-index: 2;
+}
+
+.watermarkCircle {
+  position: absolute;
+  width: 90px; height: 90px;
+  border: 12px solid #fff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  top: 80px;
+  left: 55px;
+  transform: rotate(45deg);
+}
+
+/* ── Header ── */
 .topBar {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 24px;
+  padding: 24px 20px;
   z-index: 10;
   position: relative;
 }
 
 .logoImg {
-  height: 60px;
+  height: 40px;
   width: auto;
   filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
 }
 
 .ieeeLabel {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  padding: 4px 12px;
+  /* Add an angled side on left */
+  clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%);
+  margin-top: 4px;
 }
 
-.ieeeLabelTop {
+.ieeeIcon {
+  color: #000;
   font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 1px;
-  line-height: 1.1;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.ieeeText {
+  color: #000;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 1.5px;
 }
 
-.ieeeLabelBottom {
-  font-size: 13px;
-  font-weight: 500;
-  color: #4CAF50; /* Greenish accent */
-  letter-spacing: 3px;
-  line-height: 1.1;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-/* ── Photo Area ────────────── */
+/* ── Photo ── */
 .photoWrap {
   flex: 1;
   position: relative;
-  z-index: 2;
+  z-index: 6;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   overflow: hidden;
-  margin-top: -20px; /* Pull up under header */
+  margin-top: -20px;
 }
 
 .photo {
-  max-width: 90%;
-  max-height: 110%;
-  border-radius: 5%;
+  max-width: 95%;
+  max-height: 115%;
   object-fit: contain;
   object-position: bottom center;
-  filter: drop-shadow(0 10px 25px rgba(0,0,0,0.6));
-  z-index: 3;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
+  z-index: 7;
 }
 
 .photoFallback {
   width: 150px;
   height: 150px;
-  background: #1d3323; /* Greenish */
+  background: #111416;
+  border: 2px solid #4CAF50;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Montserrat', sans-serif;
   font-size: 72px;
   font-weight: 800;
-  color: #4CAF50; /* Greenish accent */
+  color: #4CAF50;
   border-radius: 50%;
   box-shadow: 0 8px 24px rgba(0,0,0,0.5);
   margin-bottom: 40px;
-  z-index: 3;
+  z-index: 7;
 }
 
-/* Adds depth behind/around the photo */
-.photoVignette {
+.photoGradient {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60%;
-  background: linear-gradient(0deg, #0b1410 0%, transparent 100%);
-  z-index: 4;
+  bottom: 0; left: 0; right: 0;
+  height: 100px;
+  background: linear-gradient(to top, #0d0f11 0%, rgba(13,15,17,0.8) 40%, transparent 100%);
+  z-index: 8;
   pointer-events: none;
 }
 
-/* ── Info Panel (Bottom Section) ─────────────── */
+/* ── Info Panel ── */
 .infoPanel {
   position: relative;
   z-index: 10;
   padding: 0 24px 24px 24px;
-  background: #0b1410;
+  background: #0d0f11;
   display: flex;
   flex-direction: column;
 }
 
-.accentRule {
-  width: 30px;
-  height: 3px;
-  background: #4CAF50; /* Greenish accent */
-  margin-bottom: 16px;
-  border-radius: 2px;
-}
-
-.nameRow {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
+.nameContainer {
   margin-bottom: 4px;
 }
 
 .name {
-  font-family: 'Oswald', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 500;
   color: #ffffff;
   line-height: 1.1;
-  letter-spacing: 0.5px;
   margin: 0;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+  letter-spacing: -0.5px;
+}
+
+.positionRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
 .position {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #4CAF50; /* Keep the existing green accent or change to an electric blue */
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #4CAF50; 
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin: 0 0 12px 0;
+  letter-spacing: 3px;
+  margin: 0;
 }
 
 .department {
-  font-family: 'Montserrat', sans-serif;
-  color: #a0aec0;
-  margin: 0 0 24px 0;
+  font-family: 'Outfit', sans-serif;
+  color: #8c979a;
+  margin: 0 0 20px 0;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.5px;
 }
 
 .departmentText {
-  color: #cbd5e1;
+  color: #abb6b9;
 }
 
 .separator {
@@ -224,30 +286,31 @@
 }
 
 .batchText {
-  color: #a0aec0;
+  color: #8c979a;
 }
 
-/* ── Social Links ──────────── */
-/* CRITICAL CONSTRAINT: Exact format kept */
+/* ── Social Links ── */
 .socialsRow {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  column-gap: 20px;
+  column-gap: 24px;
   row-gap: 12px;
   margin-bottom: 8px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
 .socialTextLink {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #a0aec0;
+  color: #8c979a;
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   transition: color 0.2s ease;
 }
 
@@ -259,7 +322,7 @@
   opacity: 0.7;
   transform: rotate(-45deg);
   transition: transform 0.2s ease, opacity 0.2s ease;
-  color: #4CAF50; /* Greenish accent */
+  color: #4CAF50;
 }
 
 .socialTextLink:hover .socialArrow {
@@ -267,71 +330,7 @@
   transform: rotate(0deg);
 }
 
-/* ── Bottom Bar ──────────── */
-.bottomBar {
-  background: #4CAF50; /* Greenish accent */
-  padding: 8px 24px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  z-index: 10;
-}
-
-.memberTag {
-  font-family: 'Oswald', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  color: #ffffff;
-}
-
-/* ── Loading Skeleton ────────────────── */
-.skeletonHeader {
-  height: 108px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.skeletonPhotoArea {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.03);
-  position: relative;
-  overflow: hidden;
-}
-
-.skeletonPhotoArea::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-  animation: shimmer 1.5s infinite;
-}
-
-.skeletonInfo {
-  padding: 24px;
-  background: #0b1410;
-}
-
-.skeletonLine {
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.08);
-  position: relative;
-  overflow: hidden;
-}
-
-.skeletonLine::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-/* ── State: Not found / Error ───────────────── */
+/* ── State: Not found / Error ── */
 .stateContent {
   flex: 1;
   display: flex;
@@ -342,30 +341,58 @@
   text-align: center;
   z-index: 10;
 }
-
 .stateIcon {
   font-size: 56px;
   margin-bottom: 24px;
   opacity: 0.8;
   filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
 }
-
 .stateTitle {
-  font-family: 'Oswald', sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 600;
   color: #ffffff;
   margin: 0 0 16px 0;
-  letter-spacing: 1px;
 }
-
 .stateText {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #a0aec0;
+  color: #8c979a;
   line-height: 1.6;
   margin: 0;
   max-width: 280px;
+}
+
+/* ── Loading Skeleton ── */
+.skeletonHeader {
+  height: 108px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.skeletonPhotoArea {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+.skeletonPhotoArea::after, .skeletonLine::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  animation: shimmer 1.5s infinite;
+}
+.skeletonInfo {
+  padding: 24px;
+  background: #0d0f11;
+}
+.skeletonLine {
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }

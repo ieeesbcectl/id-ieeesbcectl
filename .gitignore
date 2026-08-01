@@ -1,1 +1,6 @@
+# Passwords, API keys and secrets 
 credentials.txt
+
+# AI related files
+.agents
+.claude

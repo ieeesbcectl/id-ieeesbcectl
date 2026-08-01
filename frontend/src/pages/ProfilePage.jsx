@@ -86,7 +86,6 @@ export default function ProfilePage() {
               This QR code may belong to a member who has been removed, or the link is incorrect.
             </p>
           </div>
-          <div className={styles.bottomBar} />
         </div>
       </div>
     );
@@ -104,7 +103,6 @@ export default function ProfilePage() {
             <h2 className={styles.stateTitle}>Something Went Wrong</h2>
             <p className={styles.stateText}>Unable to load profile. Please try again later.</p>
           </div>
-          <div className={styles.bottomBar} />
         </div>
       </div>
     );
@@ -118,20 +116,31 @@ export default function ProfilePage() {
     <div className={styles.page}>
       <div className={styles.card}>
 
-        {/* ── Decorative background layers ── */}
-        <div className={styles.bgGradientTop} />
-        <div className={styles.bgAccentStripe} />
-
-        {/* ── Header: logo + IEEE label ── */}
-        <div className={styles.topBar}>
-          <img src={logo} alt="IEEE SB CECTL" className={styles.logoImg} />
-          <div className={styles.ieeeLabel}>
-            <span className={styles.ieeeLabelTop}>IEEE SB</span>
-            <span className={styles.ieeeLabelBottom}>CECTL</span>
+        {/* ── Background Elements ── */}
+        <div className={styles.bgBase} />
+        <div className={styles.bgPattern} />
+        <div className={styles.bgShape1} />
+        <div className={styles.bgShape2} />
+        <div className={styles.greenLine} />
+        
+        {/* Abstract watermark shape (the big arrow/circle in background) */}
+        <div className={styles.watermark}>
+          <div className={styles.watermarkDiamond}>
+            <div className={styles.watermarkArrow} />
+            <div className={styles.watermarkCircle} />
           </div>
         </div>
 
-        {/* ── Photo cutout ── */}
+        {/* ── Header ── */}
+        <div className={styles.topBar}>
+          <img src={logo} alt="IEEE SB CECTL" className={styles.logoImg} />
+          <div className={styles.ieeeLabel}>
+            <span className={styles.ieeeIcon}>❖</span>
+            <span className={styles.ieeeText}>IEEE</span>
+          </div>
+        </div>
+
+        {/* ── Photo ── */}
         <div className={styles.photoWrap}>
           {member.photo ? (
             <img
@@ -144,21 +153,19 @@ export default function ProfilePage() {
               {member.name ? member.name.charAt(0).toUpperCase() : '?'}
             </div>
           )}
-          {/* Subtle vignette on photo sides */}
-          <div className={styles.photoVignette} />
+          {/* A gradient overlay at the bottom of the photo to blend it smoothly into the black background */}
+          <div className={styles.photoGradient} />
         </div>
 
-        {/* ── Frosted info panel ── */}
+        {/* ── Info Panel ── */}
         <div className={styles.infoPanel}>
-
-          {/* Thin accent line above name */}
-          <div className={styles.accentRule} />
-
-          <div className={styles.nameRow}>
+          <div className={styles.nameContainer}>
             <h1 className={styles.name}>{member.name}</h1>
           </div>
-
-          <p className={styles.position}>{member.position}</p>
+          
+          <div className={styles.positionRow}>
+            <p className={styles.position}>{member.position}</p>
+          </div>
 
           {(member.department || member.batch) && (
             <p className={styles.department}>
@@ -188,17 +195,12 @@ export default function ProfilePage() {
                     className={styles.socialTextLink}
                   >
                     <span className={styles.socialText}>{label}</span>
-                    <FaArrowRight size={11} className={styles.socialArrow} />
+                    <FaArrowRight size={10} className={styles.socialArrow} />
                   </a>
                 );
               })}
             </div>
           )}
-        </div>
-
-        {/* ── Bottom bar with membership tag ── */}
-        <div className={styles.bottomBar}>
-          <span className={styles.memberTag}>IEEE SB CECTL MEMBER</span>
         </div>
 
       </div>

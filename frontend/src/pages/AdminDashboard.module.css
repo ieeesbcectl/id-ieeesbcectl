@@ -96,7 +96,7 @@
 }
 
 .statValue {
-  font-family: 'Anton SC', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 32px;
   color: var(--text-primary);
   line-height: 1;
@@ -178,20 +178,12 @@
   gap: 12px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-}
 
 .cardPhotoWrap {
   width: 72px;
   height: 72px;
   border-radius: 50%;
   overflow: hidden;
-  /* Gradient ring */
-  padding: 2px;
-  background: var(--accent-gradient);
-  flex-shrink: 0;
 }
 
 .cardPhoto {
@@ -221,7 +213,7 @@
 }
 
 .cardName {
-  font-family: 'Anton SC', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   color: var(--text-primary);
   letter-spacing: 0.3px;
@@ -288,10 +280,11 @@
 }
 
 .confirmTitle {
-  font-family: 'Anton SC', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 22px;
   color: var(--text-primary);
   margin-bottom: 12px;
+  text-align: justify;
 }
 
 .confirmText {
@@ -299,6 +292,7 @@
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 24px;
+  text-align: justify;
 }
 
 .confirmText strong { color: var(--text-primary); }
