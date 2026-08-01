@@ -16,7 +16,8 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
   width: 100%;
   max-width: 640px;
-  max-height: 90vh;
+  max-height: calc(100vh - 32px); /* Fallback */
+  max-height: calc(100dvh - 32px); /* Responsive to mobile address bars */
   overflow-y: auto;
   display: flex;
   flex-direction: column;

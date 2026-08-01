@@ -107,6 +107,35 @@ export default function AdminDashboard() {
     }
   };
 
+  // Copy Profile Link
+  const copyLink = async (member) => {
+    const url = `${window.location.origin}/profile/${member.id}`;
+    
+    if (!navigator.clipboard) {
+      // Fallback for non-secure contexts (HTTP) like local network testing
+      try {
+        const textArea = document.createElement("textarea");
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Link copied to clipboard!');
+      } catch (err) {
+        alert('Failed to copy link. URL: ' + url);
+      }
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(url);
+      alert('Link copied to clipboard!');
+    } catch (err) {
+      alert('Failed to copy link. URL: ' + url);
+    }
+  };
+
   return (
     <div className={styles.page}>
       {/* Top bar */}
@@ -179,21 +208,28 @@ export default function AdminDashboard() {
                     disabled={qrLoading[member.id]}
                     title="Download QR Code"
                   >
-                    {qrLoading[member.id] ? '…' : '⬇ QR'}
+                    {qrLoading[member.id] ? '…' : '⬇️ QR'}
+                  </button>
+                  <button
+                    className={styles.actionBtn}
+                    onClick={() => copyLink(member)}
+                    title="Copy Profile Link"
+                  >
+                    🔗 Link
                   </button>
                   <button
                     className={styles.actionBtn}
                     onClick={() => openEdit(member)}
                     title="Edit member"
                   >
-                    ✏ Edit
+                    ✏️ Edit
                   </button>
                   <button
                     className={`${styles.actionBtn} ${styles.danger}`}
                     onClick={() => setDeleteTarget(member)}
                     title="Delete member"
                   >
-                    🗑 Delete
+                    🗑️ Delete
                   </button>
                 </div>
               </div>
