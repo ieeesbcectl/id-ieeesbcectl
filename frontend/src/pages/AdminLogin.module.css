@@ -35,10 +35,9 @@
 }
 
 .title {
-  font-family: 'Anton SC', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 28px;
   color: var(--text-primary);
-  letter-spacing: 0.5px;
   margin-bottom: 6px;
 }
 

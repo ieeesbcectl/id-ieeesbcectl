@@ -36,10 +36,9 @@
 }
 
 .title {
-  font-family: 'Anton SC', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 22px;
   color: var(--text-primary);
-  letter-spacing: 0.5px;
 }
 
 .closeBtn {
@@ -76,8 +75,8 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: rgba(108, 99, 255, 0.12);
-  border: 2px dashed rgba(108, 99, 255, 0.5);
+  background: rgb(42, 59, 42);
+  border: 2px dashed var(--primary-hover);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,7 +84,7 @@
   overflow: hidden;
   transition: border-color 0.2s;
 }
-.photoPreview:hover { border-color: #6C63FF; }
+.photoPreview:hover { border-color: var(--primary) }
 
 .previewImg {
   width: 100%;
@@ -95,7 +94,7 @@
 
 .photoPlaceholder {
   font-size: 12px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-align: center;
   padding: 8px;
 }
