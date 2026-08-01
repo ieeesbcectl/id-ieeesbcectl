@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import api from '../api';
 import styles from './ProfilePage.module.css';
 import logo from '../assets/logo_bg_removed.png';
-import akhilImage from '../assets/Akhil_S_Krishna-SIGHT_Vice_Chair.avif';
+import akhilImage from '../assets/Akhil_S_Krishna-SIGHT_Vice_Chair.jpg';
 import { FaArrowRight } from 'react-icons/fa';
 
 const SOCIAL_LINKS = {
@@ -31,9 +31,9 @@ export default function ProfilePage() {
         batch: '2024 - 2028',
         photo: akhilImage,
         socials: {
-          linkedin: 'https://linkedin.com',
-          github: 'https://github.com',
-          email: 'akhil@example.com'
+          linkedin: 'https://linkedin.com/',
+          github: 'https://github.com/',
+          email: 'user@example.com'
         }
       });
       setStatus('found');
