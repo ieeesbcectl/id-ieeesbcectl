@@ -27,7 +27,7 @@ export default function ProfilePage() {
         id: 'test-id-123',
         name: 'Akhil S Krishna',
         position: 'SIGHT Vice Chair',
-        department: 'Computer Science',
+        department: 'ECE',
         batch: '2024 - 2028',
         photo: akhilImage,
         socials: {
