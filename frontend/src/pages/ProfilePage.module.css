@@ -201,6 +201,13 @@
   z-index: 7;
 }
 
+@media (max-width: 576px) { 
+  .photo {
+    max-width: 80vw;
+    max-height: 75vh;
+  }
+}
+
 .photoFallback {
   width: 150px;
   height: 150px;
