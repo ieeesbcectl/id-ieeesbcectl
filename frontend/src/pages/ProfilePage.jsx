@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import api from '../api';
 import styles from './ProfilePage.module.css';
 import logo from '../assets/logo_bg_removed.png';
+import ieeeLogo from '../assets/IEEE_logo.avif';
 import akhilImage from '../assets/Akhil_S_Krishna-SIGHT_Vice_Chair.jpg';
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -134,10 +135,7 @@ export default function ProfilePage() {
         {/* ── Header ── */}
         <div className={styles.topBar}>
           <img src={logo} alt="IEEE SB CECTL" className={styles.logoImg} />
-          <div className={styles.ieeeLabel}>
-            <span className={styles.ieeeIcon}>❖</span>
-            <span className={styles.ieeeText}>IEEE</span>
-          </div>
+          <img src={ieeeLogo} alt="IEEE" className={styles.ieeeLogoImg} />
         </div>
 
         {/* ── Photo ── */}
